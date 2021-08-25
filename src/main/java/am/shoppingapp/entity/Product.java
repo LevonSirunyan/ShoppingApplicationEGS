@@ -23,8 +23,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user_table")
-public class User {
+@Table(name = "product_table")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -33,15 +33,12 @@ public class User {
     private String name;
 
     @Column(nullable = false)
-    private String pass;
+    private Float price;
 
-    @ManyToOne
-    private Role role;
-
-    @Column
-    private boolean blocked;
-
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "product")
     @Transient
     private Set<Rate> rateList;
+
+    @ManyToOne
+    private Category category;
 }

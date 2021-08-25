@@ -2,13 +2,13 @@ package am.shoppingapp.controller;
 
 import am.shoppingapp.config.jwt.JwtProvider;
 import am.shoppingapp.entity.User;
+import am.shoppingapp.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import am.shoppingapp.service.UserService;
 
 @RestController
 @RequestMapping("/security")
@@ -36,11 +36,15 @@ public class SecurityController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestParam String login, @RequestParam String pass) {
-        User user = new User();
-        user.setPass(pass);
-        user.setName(login);
-        userService.saveUser(user);
-        return ResponseEntity.ok("OK");
+        try {
+            User user = new User();
+            user.setPass(pass);
+            user.setName(login);
+            userService.saveUser(user);
+            return ResponseEntity.ok("OK");
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
     }
 
 }

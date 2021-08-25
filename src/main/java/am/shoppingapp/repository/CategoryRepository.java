@@ -1,12 +1,9 @@
 package am.shoppingapp.repository;
 
-import am.shoppingapp.entity.User;
+import am.shoppingapp.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-
-    User findByName(String name);
-
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 }

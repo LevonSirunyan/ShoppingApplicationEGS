@@ -1,6 +1,7 @@
 package am.shoppingapp.entity;
 
 
+import am.shoppingapp.enums.RoleName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,5 +34,4 @@ public class Role {
     @NaturalId
     @Column(name = "name", nullable = false, length = 60)
     private RoleName name;
-
 }

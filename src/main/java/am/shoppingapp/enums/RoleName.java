@@ -1,4 +1,4 @@
-package am.shoppingapp.entity;
+package am.shoppingapp.enums;
 
 public enum RoleName {
     ROLE_USER,

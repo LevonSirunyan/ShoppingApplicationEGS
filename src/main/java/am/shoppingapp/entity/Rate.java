@@ -1,5 +1,6 @@
 package am.shoppingapp.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,10 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import java.util.Set;
 
 @Builder
 @Getter
@@ -23,25 +21,21 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user_table")
-public class User {
+@Table(name = "rate_table")
+public class Rate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(name = "rate_score", nullable = false)
+    private Integer value;
 
-    @Column(nullable = false)
-    private String pass;
+    @Column(name = "comment", nullable = false)
+    private String comment;
 
     @ManyToOne
-    private Role role;
+    private User user;
 
-    @Column
-    private boolean blocked;
-
-    @OneToMany(mappedBy = "user")
-    @Transient
-    private Set<Rate> rateList;
+    @ManyToOne
+    private Product product;
 }

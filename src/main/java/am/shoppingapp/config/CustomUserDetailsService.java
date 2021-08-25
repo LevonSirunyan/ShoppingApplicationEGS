@@ -2,10 +2,10 @@ package am.shoppingapp.config;
 
 
 import am.shoppingapp.entity.User;
+import am.shoppingapp.service.UserService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import am.shoppingapp.service.UserService;
 
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
